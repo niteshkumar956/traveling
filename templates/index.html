@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Planning App</title>
+</head>
+<body>
+    <h1>Travel Itineraries</h1>
+    <ul>
+        {% for itinerary in itineraries %}
+            <li>
+                <strong>{{ itinerary['destination'] }}</strong> - {{ itinerary['dates'] }}<br>
+                Activities: {{ itinerary['activities'] }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add New Itinerary</h2>
+    <form action="{{ url_for('add_itinerary') }}" method="post">
+        <label for="destination">Destination:</label>
+        <input type="text" name="destination" required><br>
+
+        <label for="dates">Dates:</label>
+        <input type="text" name="dates" placeholder="YYYY-MM-DD to YYYY-MM-DD" required><br>
+
+        <label for="activities">Activities (comma-separated):</label>
+        <input type="text" name="activities" required><br>
+
+        <button type="submit">Add Itinerary</button>
+    </form>
+</body>
+</html>
